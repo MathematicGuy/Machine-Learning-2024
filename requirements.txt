@@ -1,3 +1,4 @@
+jupyter
 numpy
 pandas
 scikit-learn
@@ -6,10 +7,12 @@ seaborn
 scipy
 notebook
 tensorflow
+sklearn
+nltk
 keras
-torch
 torchvision
 torchaudio
+torch
 xgboost
 lightgbm
 catboost
@@ -20,3 +23,5 @@ nltk
 spacy
 gensim
 xgboost
+plotly
+
