@@ -4,10 +4,10 @@ import numpy as np
 blank = np.zeros((500, 500, 3), dtype='uint8')  # 0: black, 1: white
 # cv.imshow('Blank', blank)
 
-# 1. Point the image a specific color
-#?> Insert color to blank image blank[y1:y2, x1:x2] - height, width
-# blank[100:150, 100:600] = 0, 0, 255  # draw in a certain range
-# cv.imshow('Red', blank)
+# 1. Insert color to blank image 
+#?> blank[y1:y2, x1:x2] - height, width
+blank[100:150, 100:600] = 0, 0, 255  # draw in a certain range
+cv.imshow('Red', blank)
 
 
 # 2. Draw a rectangle
@@ -28,8 +28,8 @@ cv.line(blank, (100, 100), (200, 200), (255, 0, 0), thickness=3)
 
 # 5. Write Text
 #?> putText(image, text, start_coordinate, font, font_scale, color, thickness)
-cv.putText(blank, 'Helo my name is Thanh', (45, 325), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 255,0), 1)
-cv.imshow('Text', blank)
+# cv.putText(blank, 'Helo my name is Thanh', (45, 325), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 255,0), 1)
+# cv.imshow('Text', blank)
 
 
 

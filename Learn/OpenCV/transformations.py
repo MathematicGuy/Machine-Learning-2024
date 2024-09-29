@@ -6,7 +6,7 @@ img = cv.imread('Resources/Photos/group 1.jpg')
 cv.imshow('Boston', img)
 
 
-#! Translation
+#! Translation: translate image relative to the image frame
 # x: Right
 # y: Down
 # -x: Left
@@ -18,8 +18,8 @@ def translate(img, x, y):
     return cv.warpAffine(img, transMatrix, dimensions)
 
 
-# translated = translate(img, 100, -100)
-# cv.imshow('Translated', translated)
+translated = translate(img, 100, -100)
+cv.imshow('Translated', translated)
 
 #! Rotation
 def rotate(img, angle, rotationPoint=None):
@@ -34,11 +34,11 @@ def rotate(img, angle, rotationPoint=None):
     return cv.warpAffine(img, rotMatrix, dimensions)
 
 
-rotated = rotate(img, 45)
-cv.imshow('Rotated', rotated)
+# rotated = rotate(img, 45)
+# cv.imshow('Rotated', rotated)
 
-# Flipping: 0: vertical, 1: horizontal, -1: both
-flip = cv.flip(img, -1)
-cv.imshow('Flip', flip)
+# # Flipping: 0: vertical, 1: horizontal, -1: both
+# flip = cv.flip(img, -1)
+# cv.imshow('Flip', flip)
 
 cv.waitKey(0)
