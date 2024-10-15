@@ -1,0 +1,4 @@
+bank_name,interest_rate,bank_asset
+SouthBank,0.02,511700.39728
+NorthBank,0.03,2000000.0
+TrustBank,0.04,1500000.0
