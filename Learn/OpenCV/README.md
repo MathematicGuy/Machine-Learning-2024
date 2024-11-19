@@ -35,4 +35,4 @@ $ pip install caer
 - Face Recognition using OpenCV's LBPHFaceRecognizer algorithm ([2:49:05](https://www.youtube.com/watch?v=x3c8w2ruhjs&t=10145s))
     
 ## 5. Capstone: Deep Computer Vision
-- Building a Deep Computer Vision model to classify between the characters in the popular TV s
+- Building a Deep Computer Vision model to classify between the characters in the popular TV 
