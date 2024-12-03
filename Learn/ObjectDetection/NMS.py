@@ -22,7 +22,7 @@ def nms(
     """
     if isinstance(bboxes, torch.Tensor) == False:
         bboxes = torch.tensor(bboxes)
-
+    
     # assert isinstance(bboxes, torch.Tensor) # warning if bboxes is not tensor        
     
     # Discard all bboxes with IoU < iou_threshold by only taking boxes with iou > threshold                               ````

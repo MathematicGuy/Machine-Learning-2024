@@ -1,9 +1,13 @@
 import torch
 
-amount_boxes = [{0: torch.tensor([0., 0.])}, {1: torch.tensor([0.])}, {2: torch.tensor([0.])}]
+# Create a 3D tensor
+tensor = torch.rand(2, 3, 4)
+print(tensor)
 
-print("Original value:", amount_boxes[0])
+# Using [..., 0:1]
+result_slice = tensor[..., 0:1]
+print("Shape with slicing:", result_slice.shape)
 
-# Update the value at index 0, 0
-amount_boxes[0][0] = torch.tensor([1])
-print("Updated value:", amount_boxes[0][0])
+# Using [..., 0]
+result_index = tensor[..., 0]
+print("Shape with indexing:", result_index.shape)

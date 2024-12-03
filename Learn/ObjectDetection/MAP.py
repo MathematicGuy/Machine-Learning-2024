@@ -51,7 +51,7 @@ def mean_average_precision(
         #! Counting total bbox index of the same class by box's index
         #? e.g. true_boxes = [[1,0,x1,y1,w1,h1], [1,0,x2,y2,w2,h2]] as Counter({1:2}) where 1 is box's index
         amount_bboxes = Counter([boxes[0] for boxes in ground_truths]) # Counter({0: 2, 1: 1, 2: 1})        
-        
+        print('lllll:',amount_bboxes)
         
         #? Create key:value dictionary to take count of matched gt_bboxes where key = ground truth box's index
         amount_bboxes_list = []
@@ -106,7 +106,7 @@ def mean_average_precision(
             if detection[0] > len(amount_bboxes):
                 print("!!!!!!!!!!!!!!!!")
                 
-            print('train index:', detection[0])
+        print('train index:', detection[0])
             print(f'best_gt_idx: {best_gt_idx}')
             print('best_iou:', best_iou)
             # print(f'detection {detection_idx} amount_bboxes: {amount_bboxes[detection[0]]}')

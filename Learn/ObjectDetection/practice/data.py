@@ -1,8 +1,8 @@
 # pred_boxes = [[train_idx, class_prediction, prob_score, x1, y1, x2, y2], ...]
 pred_boxes = [
     # Class 0 (e.g., "cat")
-    [0, 0, 0.7, 55, 55, 145, 145],
     [0, 0, 0.9, 50, 50, 150, 150],
+    [0, 0, 0.7, 55, 55, 145, 145],
     [1, 0, 0.6, 60, 60, 160, 160],
     [2, 0, 0.85, 45, 45, 155, 155],
 
@@ -148,4 +148,44 @@ true_boxes = [
 
     # Class 19 (e.g., "bridge")
     [1, 19, 1.0, 448, 448, 552, 552],
+    
+    [10, 20, 1.0, 448, 448, 552, 552],
+    [10, 22, 1.0, 448, 448, 552, 552],
+    [10, 23, 1.0, 448, 448, 552, 552],
 ]
+
+import matplotlib.pyplot as plt
+import matplotlib.patches as patches
+
+def visualize_boxes(pred_boxes, true_boxes):
+    pred_indices = set(box[0] for box in pred_boxes)
+    num_subplots = len(pred_indices)
+    fig, axes = plt.subplots(1, num_subplots, figsize=(12 * num_subplots, 12))
+
+    if num_subplots == 1:
+        axes = [axes]
+
+    for ax, pred_idx in zip(axes, pred_indices):
+        ax.set_title(f'Prediction Index: {pred_idx}')
+        
+        # Plot predicted boxes
+        for box in pred_boxes:
+            if box[0] == pred_idx:
+                rect = patches.Rectangle((box[3], box[4]), box[5] - box[3], box[6] - box[4], linewidth=2, edgecolor='r', facecolor='none')
+                ax.add_patch(rect)
+                ax.text(box[3], box[4], f'Pred: {box[1]} ({box[2]:.2f})', color='r', fontsize=12, verticalalignment='top')
+
+        # Plot true boxes
+        for box in true_boxes:
+            if box[0] == pred_idx:
+                rect = patches.Rectangle((box[3], box[4]), box[5] - box[3], box[6] - box[4], linewidth=2, edgecolor='g', facecolor='none')
+                ax.add_patch(rect)
+                ax.text(box[3], box[4], f'True: {box[1]}', color='g', fontsize=12, verticalalignment='bottom')
+
+        ax.set_xlim(0, 600)
+        ax.set_ylim(0, 600)
+        ax.invert_yaxis()
+
+    plt.show()
+
+visualize_boxes(pred_boxes, true_boxes)
