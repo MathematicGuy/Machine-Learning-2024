@@ -107,26 +107,26 @@ def mean_average_precision(
                 print("!!!!!!!!!!!!!!!!")
                 
         print('train index:', detection[0])
-            print(f'best_gt_idx: {best_gt_idx}')
-            print('best_iou:', best_iou)
-            # print(f'detection {detection_idx} amount_bboxes: {amount_bboxes[detection[0]]}')
-            
-            #? annotate gt_box index in amount_bboxes acoording to detection index
-            #? TP & FP classified by threshold 
-            #! How to track detection_index along with gt_index <-> detection[0] = gt[0]  
-            if iou > iou_threshold:
-                if amount_bboxes[detection[0]][best_gt_idx] == 0:
-                    TP[detection_idx] = 1
-                    amount_bboxes[detection[0]][best_gt_idx] = 1
-                    print(f'amount_bboxes: {amount_bboxes[detection[0]][best_gt_idx]}')
-                else:
-                    FP[detection_idx] = 1                                         
+        print(f'best_gt_idx: {best_gt_idx}')
+        print('best_iou:', best_iou)
+        # print(f'detection {detection_idx} amount_bboxes: {amount_bboxes[detection[0]]}')
+        
+        #? annotate gt_box index in amount_bboxes acoording to detection index
+        #? TP & FP classified by threshold 
+        #! How to track detection_index along with gt_index <-> detection[0] = gt[0]  
+        if iou > iou_threshold:
+            if amount_bboxes[detection[0]][best_gt_idx] == 0:
+                TP[detection_idx] = 1
+                amount_bboxes[detection[0]][best_gt_idx] = 1
+                print(f'amount_bboxes: {amount_bboxes[detection[0]][best_gt_idx]}')
             else:
-                #? if ground truth already matched
-                FP[detection_idx] = 1
-                #? Prediction bboxes > Ground Truth bbox: detection_idx > best_gt_idx (i.e. amount_bboxes index)
-          
-            print(f"----- End Detection {detection_idx} ----\n")
+                FP[detection_idx] = 1                                         
+        else:
+            #? if ground truth already matched
+            FP[detection_idx] = 1
+            #? Prediction bboxes > Ground Truth bbox: detection_idx > best_gt_idx (i.e. amount_bboxes index)
+        
+        print(f"----- End Detection {detection_idx} ----\n")
         
 
         amount_bboxes
@@ -148,5 +148,5 @@ if __name__ == "__main__":
     pred_boxes = pred_boxes
     true_boxes = true_boxes
 
-    mean_average_precision(pred_boxes, true_boxes)
-        
+    map = mean_average_precision(pred_boxes, true_boxes)
+    print('map:',map)

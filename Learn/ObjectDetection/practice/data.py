@@ -73,7 +73,7 @@ pred_boxes = [
     # Class 19 (e.g., "bridge")
     [1, 19, 0.92, 450, 450, 550, 550],
 ]
-
+# print(pred_boxes[:4])
 
 true_boxes = [
     # Class 0 (e.g., "cat")
@@ -188,4 +188,5 @@ def visualize_boxes(pred_boxes, true_boxes):
 
     plt.show()
 
-visualize_boxes(pred_boxes, true_boxes)
+if __name__ == '__main__':
+    visualize_boxes(pred_boxes, true_boxes)
