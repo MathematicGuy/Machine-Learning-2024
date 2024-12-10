@@ -12,7 +12,7 @@ from typing import List
 
 app = FastAPI()
 # Load custom weights for YOLOv10
-model = YOLOv10('Yolo-Weights/4-corners-best.pt')
+model = YOLOv10('train2\weights\\best.pt')
 
 UPLOAD_FOLDER = 'images/uploads'
 DOWNLOAD_FOLDER = 'images/downloads'
