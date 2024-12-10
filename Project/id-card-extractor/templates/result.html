@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Detection Results</title>
+  </head>
+  <body>
+    <h1>Detection Results</h1>
+    {% for filename in filenames %}
+      <div>
+        <img src="{{ url_for('static', path='images/downloads/' + filename) }}" alt="Result Image">
+      </div>
+    {% endfor %}
+    <br>
+    <a href="/">Upload more images</a>
+  </body>
+</html>
