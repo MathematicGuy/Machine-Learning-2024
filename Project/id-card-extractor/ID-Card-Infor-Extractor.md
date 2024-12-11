@@ -1,56 +1,27 @@
-# ID-Card-Information-Extractor/
-id-card-extractor/
-│
-├── app/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── routes/
-│   │   ├── __init__.py
-│   │   ├── upload.py
-│   │   ├── extract.py
-│   │   ├── display.py
-│   │   └── webcam.py         # Endpoint for handling webcam input
-│   ├── services/
-│   │   ├── __init__.py
-│   │   ├── extraction.py
-│   │   ├── validation.py
-│   │   ├── detection.py      # Logic for detecting ID card in webcam frames
-│   │   └── webcam_feed.py    # Logic for capturing and processing webcam feed
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── id_card.py
-│   ├── database/
-│   │   ├── __init__.py
-│   │   └── config.py
-│   ├── utils/
-│   │   ├── __init__.py
-│   │   ├── helpers.py
-│   │   └── webcam_utils.py   # Helper functions for webcam integration
-│   └── schemas/
-│       ├── __init__.py
-│       └── id_card.py
-│
-├── gradio_ui/
-│   ├── __init__.py
-│   ├── app.py
-│   ├── components.py
-│   └── webcam_component.py   # Gradio component for webcam integration
-│
-├── tests/
-│   ├── __init__.py
-│   ├── test_routes.py
-│   ├── test_services.py
-│   ├── test_webcam.py        # Tests for webcam functionality
-│   └── test_ui.py
-│
-├── static/
-│   └── css/
-│       └── styles.css
-│
-├── .env
-├── requirements.txt
-├── README.md
-└── Dockerfile
-
-
-
+# Output Format
+```json
+{
+    "detections": [
+        {
+            "class_id": 2,
+            "confidence": 0.8961740136146545,
+            "bbox": [196.90286254882812, 401.309814453125, 273.18865966796875, 480.3156433105469]
+        },
+        {
+            "class_id": 0,
+            "confidence": 0.8172028064727783,
+            "bbox": [169.57452392578125, 799.4217529296875, 297.0216064453125, 915.520263671875]
+        },
+        {
+            "class_id": 3,
+            "confidence": 0.7988480925559998,
+            "bbox": [983.1585693359375, 393.4317932128906, 1057.0203857421875, 503.1258544921875]
+        },
+        {
+            "class_id": 1,
+            "confidence": 0.7286223769187927,
+            "bbox": [951.108154296875, 833.697265625, 1031.959228515625, 923.3997802734375]
+        }
+    ]
+}
+```

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOLOv11n Detection Demo</title>
+    <style>
+        #canvas {
+            border: 1px solid black;
+        }
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>YOLOv11n Object Detection Demo</h1>
+    <form id="upload-form">
+        <input type="file" id="file-input" accept="image/*" required>
+        <button type="submit">Detect</button>
+    </form>
+    <canvas id="canvas"></canvas>
+    <div id="results"></div>
+
+    <script>
+        const form = document.getElementById('upload-form');
+        const fileInput = document.getElementById('file-input');
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const resultsDiv = document.getElementById('results');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            resultsDiv.innerHTML = '';
+
+            const file = fileInput.files[0];
+            if (!file) return;
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                // Send image to /detect endpoint
+                const response = await fetch('/detect', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to detect objects.');
+                }
+
+                const detections = await response.json();
+
+                // Load the image into the canvas
+                const img = new Image();
+                img.onload = () => {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+
+                    // Draw bounding boxes
+                    detections.forEach(detection => {
+                        const { label, confidence, bbox } = detection;
+                        const [x, y, width, height] = bbox;
+
+                        ctx.strokeStyle = 'red';
+                        ctx.lineWidth = 2;
+                        ctx.strokeRect(x, y, width, height);
+
+                        ctx.fillStyle = 'red';
+                        ctx.font = '16px Arial';
+                        ctx.fillText(`${label} (${(confidence * 100).toFixed(2)}%)`, x, y - 5);
+                    });
+                };
+
+                img.src = URL.createObjectURL(file);
+
+                // Display detection results
+                detections.forEach(detection => {
+                    const { label, confidence } = detection;
+                    const result = document.createElement('p');
+                    result.textContent = `${label}: ${(confidence * 100).toFixed(2)}%`;
+                    resultsDiv.appendChild(result);
+                });
+
+            } catch (error) {
+                resultsDiv.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
