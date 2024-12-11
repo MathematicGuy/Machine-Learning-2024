@@ -1,0 +1,15 @@
+# Create .gitignore for processed_adaptive_equalization
+echo "# Ignore all files in this directory" > processed_adaptive_equalization/.gitignore
+echo "*" >> processed_adaptive_equalization/.gitignore
+
+# Create .gitignore for processed_CLAHE
+echo "# Ignore all files in this directory" > processed_CLAHE/.gitignore
+echo "*" >> processed_CLAHE/.gitignore
+
+# Create .gitignore for processed_histogram_equalization2
+echo "# Ignore all files in this directory" > processed_histogram_equalization2/.gitignore
+echo "*" >> processed_histogram_equalization2/.gitignore
+
+# Create .gitignore for unassigned
+echo "# Ignore all files in this directory" > unassigned/.gitignore
+echo "*" >> unassigned/.gitignore
