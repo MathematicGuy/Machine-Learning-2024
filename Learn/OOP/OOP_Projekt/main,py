@@ -1,0 +1,5 @@
+from bank_system import BankSystem
+
+if __name__ == "__main__":
+    system = BankSystem()
+    system.run()

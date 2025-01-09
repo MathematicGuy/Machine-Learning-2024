@@ -1,0 +1,9 @@
+user_email_send,user_email_receive,amount,bank_send,bank_receive
+john.doe@example.com,jane.smith@example.com,1000,SouthBank,NorthBank
+alice.wang@example.com,john.doe@example.com,500,TrustBank,SouthBank
+jane.smith@example.com,alice.wang@example.com,200,NorthBank,TrustBank
+thanh@gmail.com,john.doe@example.com,2000.0,SouthBank,SouthBank
+thanh@gmail.com,john.doe@example.com,123.0,SouthBank,SouthBank
+thanh@gmail.com,john.doe@example.com,12344.0,SouthBank,SouthBank
+thanh@gmail.com,john.doe@example.com,123.0,SouthBank,SouthBank
+thanh@gmail.com,john.doe@example.com,4000.0,SouthBank,SouthBank
