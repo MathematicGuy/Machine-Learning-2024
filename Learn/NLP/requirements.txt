@@ -1,0 +1,13 @@
+nltk
+spacy
+transformers
+textblob
+gensim
+flair
+torch         # Ensure to customize the torch version based on your system (e.g., CUDA)
+scikit-learn
+fasttext
+openai
+stanza
+wordcloud
+vaderSentiment
